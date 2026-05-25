@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\academic_services_section;
 
 class academic_services_sectionController extends Controller
 {
@@ -18,9 +19,11 @@ class academic_services_sectionController extends Controller
     public function  store(Request $request)
     {
         $request->validate([
+            'icon'=>'required|string|max:255',
             'title'=>'required|string|max:255',
         ]);
         academic_services_section::create([
+        'icon' => $request->icon,
         'title'   => $request->title,
         ]);
 
@@ -35,9 +38,11 @@ class academic_services_sectionController extends Controller
     {
         $academic=academic_services_section::findOrFail($id);
         $request->validate([
+            'icon'=>'nullable|string|max:255',
             'title'=>'nullable|string|max:255',
         ]);
         $academic->update([
+        'icon' => $request->icon,   
         'title'   => $request->title,
         ]);
 

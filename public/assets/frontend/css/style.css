@@ -348,7 +348,9 @@ p {
     color: #000000;
     margin: 0;
 }
-
+.last-box::after{
+    display:none;
+}
 .regular_box::after {
     display: none !important;
 }

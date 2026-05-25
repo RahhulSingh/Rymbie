@@ -77,7 +77,7 @@
                 <div class="row">
 
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <label class="form-label">
                             Icon
                             <span class="text-danger">*</span>
@@ -85,9 +85,9 @@
 
                         <input class="form-control"
                             name="icon"
-                            type="text"
-                            value="{{ old('icon', $academic->icon ?? '') }}"
-                            required>
+                            id=""
+                            rows="3"
+                            value="{{ old('icon', $academic->icon ?? '') }}">
 
                         @error('icon')
                             <div class="text-danger mt-1">
@@ -96,17 +96,16 @@
                         @enderror
                     </div>
 
-                    {{-- Content }}
+                    
                     <div class="col-md-12 mb-3">
 
                         <label class="form-label">Title<span class="text-danger">*</span>
                         </label>
 
-                        <textarea name="content"
-                            id="content"
-                            class="form-control">{{ old('content', $academic->content ?? '') }}</textarea>
+                        <input name="title"
+                            class="form-control" value="{{ old('title', $academic->title ?? '') }}">
 
-                        @error('content')
+                        @error('title')
                             <div class="text-danger mt-1">
                                 {{ $message }}
                             </div>
@@ -120,7 +119,7 @@
                 <div class="d-flex flex-wrap justify-content-end gap-2 mt-4">
 
                     <a class="btn btn-outline-secondary"
-                        href="{{ route('hero_section.index') }}">
+                        href="{{ route('academic_services_section.index') }}">
                         Cancel
                     </a>
 
@@ -128,7 +127,7 @@
 
                         <i class="bi bi-person-fill-gear"></i>
 
-                        {{ isset($hero) ? 'Update' : 'Add' }}
+                        {{ isset($academic) ? 'Update' : 'Add' }}
 
                     </button>
 
@@ -141,20 +140,4 @@
     </form>
 
 </div>
-
-{{-- Jodit CSS --}}
-<link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/jodit@3.24.5/build/jodit.min.css">
-
-{{-- Jodit JS --}}
-<script src="https://cdn.jsdelivr.net/npm/jodit@3.24.5/build/jodit.min.js"></script>
-
-<script>
-
-    const editor = new Jodit('#content', {
-        height: 400
-    });
-
-</script>
-
 @endsection

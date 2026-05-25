@@ -53,34 +53,17 @@
             </h2>
         </div>
         <div class="row">
-
+            @foreach($academic as $academic)
             <div class="col-4">
-                <div class="process_boxsest">
+                <div class="process_boxsest {{ $loop->last ? 'last-box' : '' }}">
                     <div class="process_icon">
-                        <i class="fa-solid fa-file-lines"></i>
+                        <i class="{{ $academic->icon }}"></i>
                     </div>
 
-                    <h3>Upload Your <br> Assignment Brief</h3>
+                    <h3>{{ $academic->title }}</h3>
                 </div>
             </div>
-
-            <div class="col-4">
-                <div class="process_boxsest">
-                    <div class="process_icon">
-                        <i class="fa-solid fa-list-check"></i>
-                    </div>
-
-                    <h3>Get a Quote <br> & Approve</h3>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="process_boxsest regular_box">
-                    <div class="process_icon">
-                        <i class="fa-regular fa-clock"></i>
-                    </div>
-                    <h3>Receive Work <br> by Deadline</h3>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="pyble-se">
