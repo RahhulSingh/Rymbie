@@ -89,7 +89,7 @@
                             value="{{ old('icon', $academic->icon ?? '') }}"
                             required>
 
-                        @error('title')
+                        @error('icon')
                             <div class="text-danger mt-1">
                                 {{ $message }}
                             </div>
