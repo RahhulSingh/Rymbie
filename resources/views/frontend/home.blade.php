@@ -31,39 +31,15 @@
             <h2> Features</h2>
         </div>
         <div class="row">
-            <div class="col-6 ">
-                <div class="feature_itemsdr">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Custom-Written Assignments</span>
+            @foreach($steps as $step)
+                <div class="col-6 ">
+                    
+                    <div class="feature_itemsdr">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>{{$step->title}}</span>
+                    </div>
                 </div>
-
-                <div class="feature_itemsdr">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Plagiarism-Free Guarantee</span>
-                </div>
-
-                <div class="feature_itemsdr">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Fast Turnaround Time</span>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="feature_itemsdr">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Dissertation & Thesis Help</span>
-                </div>
-
-                <div class="feature_itemsdr">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Proofreading & Editing</span>
-                </div>
-
-                <div class="feature_itemsdr">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <span>Confidential & Secure</span>
-                </div>
-            </div>
-        </div>
+            @endforeach
 
     </div>
     </div>

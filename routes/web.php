@@ -5,6 +5,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Hero_sectionController;
 use App\Http\Controllers\step_process_sectionController;
+use App\Http\Controllers\academic_services_sectionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,4 +69,12 @@ Route::get('/step_process_section',[step_process_sectionController::class,'index
 Route::get('/step_process_section/edit/{id}',[step_process_sectionController::class,'edit'])->name('step_process_section.edit');
 Route::put('/step_process_section/update/{id}',[step_process_sectionController::class,'update'])->name('step_process_section.update');
 Route::get('/step_process_section/delete/{id}',[step_process_sectionController::class,'delete'])->name('step_process_section.delete');
+
+// Academic services section
+Route::get('/academic_services_section/create',[academic_services_sectionController::class,'create'])->name('academic_services_section.create');
+Route::post('/academic_services_section/store',[academic_services_sectionController::class,'store'])->name('academic_services_section.store');
+Route::get('/academic_services_section',[academic_services_sectionController::class,'index'])->name('academic_services_section.index');
+Route::get('/academic_services_section/edit/{id}',[academic_services_sectionController::class,'edit'])->name('academic_services_section.edit');
+Route::put('/academic_services_section/update/{id}',[academic_services_sectionController::class,'update'])->name('academic_services_section.update');
+Route::get('/academic_services_section/delete/{id}',[academic_services_sectionController::class,'delete'])->name('academic_services_section.delete');
 // });

@@ -8,7 +8,7 @@ class step_process_sectionController extends Controller
 {
     public function  index()
     {
-        $steps=step_process_section::get();
+        $steps=step_process_section::latest()->get();
         return view('admin.step_process_section.index',compact('steps'));
     }
     public function  create()

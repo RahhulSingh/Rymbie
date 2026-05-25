@@ -71,6 +71,10 @@
           <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
           <span class="nav-text">Step Process Section</span>
         </a>
+        <a class="nav-link" href="{{route('academic_services_section.index')}}">
+          <span class="nav-icon"><i class="bi bi-file-earmark" aria-hidden="true"></i></span>
+          <span class="nav-text">Academic Services Section</span>
+        </a>
       </nav>
 
       <div class="sidebar-user">
