@@ -6,6 +6,28 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Hero_sectionController;
 use App\Http\Controllers\step_process_sectionController;
 use App\Http\Controllers\academic_services_sectionController;
+
+use App\Http\Controllers\Frontend\HowWorksController;
+use App\Http\Controllers\Frontend\ServicesController;
+use App\Http\Controllers\Frontend\AiToolsController;
+use App\Http\Controllers\Frontend\AssignmentBriefController;
+use App\Http\Controllers\Frontend\CareersController;
+use App\Http\Controllers\Frontend\ArticlesController;
+use App\Http\Controllers\Frontend\TestimonialsController;
+use App\Http\Controllers\Frontend\FaqController;
+use App\Http\Controllers\Frontend\ContactUsController;
+use App\Http\Controllers\Frontend\SamplesController;
+use App\Http\Controllers\Frontend\ResourcesController;
+use App\Http\Controllers\Frontend\LiveChatController;
+use App\Http\Controllers\Frontend\RefundPolicyController;
+use App\Http\Controllers\Frontend\PrivacyPolicyController;
+use App\Http\Controllers\Frontend\TermsConditionsController;
+use App\Http\Controllers\Frontend\LoginController;
+use App\Http\Controllers\Frontend\RegisterController;
+use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\StudentResourcesController;
+use App\Http\Controllers\Frontend\ProgramStackController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +41,27 @@ use App\Http\Controllers\academic_services_sectionController;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 
+Route::get('/how-works', [HowWorksController::class, 'index'])->name('frontend.how.works');
+Route::get('/services', [ServicesController::class, 'index'])->name('frontend.services');
+Route::get('/ai-tools', [AiToolsController::class, 'index'])->name('frontend.ai.tools');
+Route::get('/assignment-brief', [AssignmentBriefController::class, 'index'])->name('frontend.assignment_brief');
+Route::get('/careers', [CareersController::class, 'index'])->name('frontend.careers');
+Route::get('/articles', [ArticlesController::class, 'index'])->name('frontend.articles');
+Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('frontend.testimonials');
+Route::get('/faq', [FaqController::class, 'index'])->name('frontend.faq');
+Route::get('/contact_us', [ContactUsController::class, 'index'])->name('frontend.contact_us');
+Route::get('/samples', [SamplesController::class, 'index'])->name('frontend.samples');
+Route::get('/resources', [ResourcesController::class, 'index'])->name('frontend.resources');
+Route::get('/live_chat', [LiveChatController::class, 'index'])->name('frontend.live_chat');
+Route::get('/refund_policy', [RefundPolicyController::class, 'index'])->name('frontend.refund_policy');
+Route::get('/privacy_policy', [PrivacyPolicyController::class, 'index'])->name('frontend.privacy_policy');
+Route::get('/terms_conditions', [TermsConditionsController::class, 'index'])->name('frontend.terms_conditions');
+Route::get('/frontend/login', [LoginController::class, 'index'])->name('frontend.login');
+Route::get('/frontend/register', [RegisterController::class, 'index'])->name('frontend.register');
+Route::get('/about', [AboutController::class, 'index'])->name('frontend.about');
+Route::get('/student_resources', [StudentResourcesController::class, 'index'])->name('frontend.student_resources');
+Route::get('/program_stack', [ProgramStackController::class, 'index'])->name('frontend.program_stack');
 
-        
 // Route::middleware(['auth'])->group(function () {
 
         
@@ -51,8 +92,6 @@ Route::post('/store-role',[RoleController::class,'store'])->name('role.store');
 Route::get('/edit-role/{id}',[RoleController::class,'edit'])->name('role.edit');
 Route::post('/update-role/{id}',[RoleController::class,'update'])->name('role.update');
 Route::get  ('/delete-role/{id}',[RoleController::class,'delete'])->name('role.delete');
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Hero Section
 Route::get('/hero_section/create',[Hero_sectionController::class,'create'])->name('hero_section.create');

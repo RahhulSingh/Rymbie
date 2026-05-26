@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loginup</title>
+  <link rel="stylesheet" href="{{asset('assets/frontend/css/style.css')}}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+</head>
+
+<body>
+  <section class="login_up register_now">
+    <div class="container">
+      <div class="login_form">
+        <form class="card register_form">
+          <div class="peraheding_bix">
+            <h1 class="one_hedding">Welcome Back</h1>
+            <p class="subtitle">Log in to access your dashboard and get assignment support.</p>
+          </div>
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label>Password</label>
+            <input type="password" autocomplete="new-password" />
+          </div>
+
+
+          <button class="register_button">Login Now</button>
+
+          <p class="already_textlogin_move"> Don’t have an account? <a href="{{route('frontend.register')}}"> Register here </a> </p>
+        </form>
+      </div>
+    </div>
+
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+
+
+
+
+
+</body>
+
+</html>
