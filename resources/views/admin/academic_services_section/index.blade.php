@@ -54,10 +54,10 @@
                             <td class="fw-semibold">{{ $index+1 }}</td>
                             <td>
                                 <div class="table-media">
-                                    <strong>{{ $academic->title }}</strong><br>
+                                    <strong>{{ $academic->title ?? '' }}</strong><br>
                                 </div>
                             </td>
-                            <td>{!! $academic->icon !!}</td>
+                            <td>{!! $academic->icon ?? '' !!}</td>
                             <td>
                                 <div class="actions">
                                     <a href="{{ route('academic_services_section.edit',$academic->id) }}"><button

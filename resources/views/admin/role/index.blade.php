@@ -52,7 +52,7 @@
                                     permissions</span></td>
                             <td>{{ $role->users->count() }} Users</td>
                             <td>
-                                <button class="btn btn-light btn-sm" type="button">View</button>
+                                <!-- <button class="btn btn-light btn-sm" type="button">View</button> -->
                                 <a href="{{route('role.edit',$role->id)}}"><button class="btn btn-light btn-sm" type="button">Edit</button></a>
                                 <a href="{{route('role.delete',$role->id)}}"><button class="btn btn-light btn-sm" type="button">Delete</button></a>
                             </td>

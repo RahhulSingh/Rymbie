@@ -2,10 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Hero_sectionController;
 use App\Http\Controllers\step_process_sectionController;
-use App\Http\Controllers\academic_services_sectionController;
+use App\Http\Controllers\Academic_services_sectionController;
+use App\Http\Controllers\Assignments_title_sectionController;
+use App\Http\Controllers\Works_best_sectionController;
+use App\Http\Controllers\How_work_sectionController;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,14 +23,19 @@ use App\Http\Controllers\academic_services_sectionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/',[HomeController::class,'index'])->name('home');
 
 
-        
-// Route::middleware(['auth'])->group(function () {
+//Auth routes
+Route::get('/register',[AuthController::class,'showRegister'])->name('showRegister');
+Route::post('/register',[AuthController::class,'register'])->name('store');
+Route::get('admin/login',[AuthController::class,'showLogin'])->name('showLogin');
+Route::post('admin/login',[AuthController::class,'login'])->name('login');
+Route::get('admin/logout',[AuthController::class,'logout'])->name('logout');
 
-        
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+
 
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
@@ -37,9 +49,8 @@ Route::get('/',[HomeController::class,'index'])->name('home');
             return view('admin.add-user');
         })->name('admin.add-user');
 
-        Route::get('/profile', function () {
-            return view('admin.profile');
-        })->name('admin.profile');
+        Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
+        Route::post('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
 
         Route::get('/table', function () {
             return view('admin.tables');
@@ -51,8 +62,6 @@ Route::post('/store-role',[RoleController::class,'store'])->name('role.store');
 Route::get('/edit-role/{id}',[RoleController::class,'edit'])->name('role.edit');
 Route::post('/update-role/{id}',[RoleController::class,'update'])->name('role.update');
 Route::get  ('/delete-role/{id}',[RoleController::class,'delete'])->name('role.delete');
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Hero Section
 Route::get('/hero_section/create',[Hero_sectionController::class,'create'])->name('hero_section.create');
@@ -77,4 +86,29 @@ Route::get('/academic_services_section',[academic_services_sectionController::cl
 Route::get('/academic_services_section/edit/{id}',[academic_services_sectionController::class,'edit'])->name('academic_services_section.edit');
 Route::put('/academic_services_section/update/{id}',[academic_services_sectionController::class,'update'])->name('academic_services_section.update');
 Route::get('/academic_services_section/delete/{id}',[academic_services_sectionController::class,'delete'])->name('academic_services_section.delete');
-// });
+
+
+// Assignments Title Section
+Route::get('/assignments_title_section/create',[assignments_title_sectionController::class,'create'])->name('assignments_title_section.create');
+Route::post('/assignments_title_section/store',[assignments_title_sectionController::class,'store'])->name('assignments_title_section.store');
+Route::get('/assignments_title_section',[assignments_title_sectionController::class,'index'])->name('assignments_title_section.index');
+Route::get('/assignments_title_section/edit/{id}',[assignments_title_sectionController::class,'edit'])->name('assignments_title_section.edit');
+Route::put('/assignments_title_section/update/{id}',[assignments_title_sectionController::class,'update'])->name('assignments_title_section.update');
+Route::get('/assignments_title_section/delete/{id}',[assignments_title_sectionController::class,'delete'])->name('assignments_title_section.delete');
+
+// Works best section
+Route::get('/works_best_section/create',[works_best_sectionController::class,'create'])->name('works_best_section.create');
+Route::post('/works_best_section/store',[works_best_sectionController::class,'store'])->name('works_best_section.store');
+Route::get('/works_best_section',[works_best_sectionController::class,'index'])->name('works_best_section.index');
+Route::get('/works_best_section/edit/{id}',[works_best_sectionController::class,'edit'])->name('works_best_section.edit');
+Route::put('/works_best_section/update/{id}',[works_best_sectionController::class,'update'])->name('works_best_section.update');
+Route::get('/works_best_section/delete/{id}',[works_best_sectionController::class,'delete'])->name('works_best_section.delete');
+
+// How work section
+Route::get('/how_work_section/create',[How_work_sectionController::class,'create'])->name('how_work_section.create');
+Route::post('/how_work_section/store',[How_work_sectionController::class,'store'])->name('how_work_section.store');
+Route::get('/how_work_section',[How_work_sectionController::class,'index'])->name('how_work_section.index');
+Route::get('/how_work_section/edit/{id}',[How_work_sectionController::class,'edit'])->name('how_work_section.edit');
+Route::put('/how_work_section/update/{id}',[How_work_sectionController::class,'update'])->name('how_work_section.update');
+Route::get('/how_work_section/delete/{id}',[How_work_sectionController::class,'delete'])->name('how_work_section.delete');
+});

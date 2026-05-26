@@ -50,7 +50,7 @@
                             <td class="fw-semibold">{{ $index+1 }}</td>
                             <td>
                                 <div class="table-media">
-                                    <strong>{{ $step->title }}</strong><br>
+                                    <strong>{{ $step->title ?? '' }}</strong><br>
                                 </div>
                             </td>
                             <td>

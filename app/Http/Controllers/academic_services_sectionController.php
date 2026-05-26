@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\academic_services_section;
 
-class academic_services_sectionController extends Controller
+class Academic_services_sectionController extends Controller
 {
     public function  index()
     {

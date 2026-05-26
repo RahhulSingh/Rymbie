@@ -6,9 +6,9 @@
   <meta name="description" content="adminHMD authentication page">
   <title>Register | adminHMD</title>
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendors/bootstrap-icons/bootstrap-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 
 <body class="auth-body">
@@ -18,8 +18,9 @@
   <main class="auth-page">
     <section class="auth-card">
       <a class="auth-brand" href="index.html"><span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span><span><strong>adminHMD</strong><small>Create your adminHMD account.</small></span></a>
-      <div class="auth-visual"><img src="../assets/images/png/dasher-ui-bootstrap-5.jpg" alt="adminHMD dashboard interface"></div>
-      <form class="needs-validation" novalidate>
+      <div class="auth-visual"><img src="{{asset('assets/images/png/dasher-ui-bootstrap-5.jpg')}}" alt="adminHMD dashboard interface"></div>
+      <form class="needs-validation" novalidate method="POST" action="{{ route('store') }}">
+        @csrf
         <div class="mb-4">
           <p class="eyebrow mb-1">Secure Access</p>
           <h1 class="h3 mb-1">Register</h1>
@@ -36,7 +37,7 @@
     </section>
   </main>
 
-  <script src="../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/main.js"></script>
+  <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/js/main.js')}}"></script>
 </body>
 </html>

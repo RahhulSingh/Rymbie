@@ -43,8 +43,9 @@
             <div class="dropdown">
                 <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan">
-                    <span class="profile-name d-none d-sm-inline">Admin Hasan</span>
+                    
+                    <!-- <img class="avatar-img avatar-sm" src="{{ strtoupper(substr(auth()->user()->name,0,1)) }}" alt="User Avatar"> -->
+                    <span class=" d-none d-sm-inline">{{ auth()->user()->name ?? '' }}</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a></li>
@@ -52,7 +53,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Sign out</a></li>
                 </ul>
             </div>
         </div>

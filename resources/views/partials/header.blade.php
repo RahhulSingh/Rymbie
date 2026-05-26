@@ -28,7 +28,7 @@
                         <div>
                             <a class="nav-link navlinks" href="#">AI Studys Tools</a>
                         </div>
-                        <a href="{{route('admin.dashboard')}}" class="btn btn-outline-success_button" type="submit">Get Started</a>
+                        <a href="" class="btn btn-outline-success_button" type="submit">Get Started</a>
                     </form>
                 </div>
 
