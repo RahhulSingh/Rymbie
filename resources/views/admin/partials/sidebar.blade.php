@@ -180,6 +180,42 @@
 
                 </a>
 
+                <a class="nav-link {{ request()->routeIs('featured_article.*') ? 'active' : '' }}" href="{{ route('featured_article.index') }}">
+
+                    <span class="nav-icon">
+                        <i class="bi bi-newspaper"></i>
+                    </span>
+
+                    <span class="nav-text">
+                        Featured Articles
+                    </span>
+
+                </a>
+
+                <a class="nav-link {{ request()->routeIs('blog_article.*') ? 'active' : '' }}" href="{{ route('blog_article.index') }}">
+
+                    <span class="nav-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </span>
+
+                    <span class="nav-text">
+                        Blog / Articles
+                    </span>
+
+                </a>
+
+                <a class="nav-link {{ request()->routeIs('services_section.*') ? 'active' : '' }}" href="{{ route('services_section.index') }}">
+
+                    <span class="nav-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </span>
+
+                    <span class="nav-text">
+                        Service
+                    </span>
+
+                </a>
+
             </div>
 
         </div>

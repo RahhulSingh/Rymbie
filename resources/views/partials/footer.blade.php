@@ -120,11 +120,7 @@
 
                     <div class="footer-left">
                         <a class="footer_logo" href="#">
-<<<<<<< HEAD
-                            <img src="{{ asset('/assets/frontend/images/footer-logo.png') }}" alt="Footer Logo">
-=======
                             <img src="{{asset('assets/frontend/images/footer-logo.png')}}" alt="">
->>>>>>> 86c33800108946e6422e3afebcf418bf75654d47
                         </a>
                         <p>© 2003–2025 Chegg Inc. All rights reserved.</p>
                     </div>
