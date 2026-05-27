@@ -18,6 +18,8 @@ use App\Models\User;
 use App\Http\Controllers\FeaturedArticleController;
 use App\Http\Controllers\BlogArticleController;
 use App\Http\Controllers\Services_sectionController;
+use App\Http\Controllers\res_toolController;
+use App\Http\Controllers\Res_articleController;
 
 use App\Http\Controllers\Frontend\HowWorksController;
 use App\Http\Controllers\Frontend\ServicesController;
@@ -175,6 +177,24 @@ Route::get('/res_guides',[Res_guidesController::class,'index'])->name('res_guide
 Route::get('/res_guides/edit/{id}',[Res_guidesController::class,'edit'])->name('res_guides.edit');
 Route::put('/res_guides/update/{id}',[Res_guidesController::class,'update'])->name('res_guides.update');
 Route::get('/res_guides/delete/{id}',[Res_guidesController::class,'delete'])->name('res_guides.delete');
+
+// Resource Tools
+Route::get('/res_tools/create',[res_toolController::class,'create'])->name('res_tools.create');
+Route::post('/res_tools/store',[res_toolController::class,'store'])->name('res_tools.store');
+Route::get('/res_tools',[res_toolController::class,'index'])->name('res_tools.index');
+Route::get('/res_tools/edit/{id}',[res_toolController::class,'edit'])->name('res_tools.edit');
+Route::put('/res_tools/update/{id}',[res_toolController::class,'update'])->name('res_tools.update');
+Route::get('/res_tools/delete/{id}',[res_toolController::class,'delete'])->name('res_tools.delete');
+
+
+// Resource Articles
+Route::get('/res_articles/create',[Res_articleController::class,'create'])->name('res_articles.create');
+Route::post('/res_articles/store',[Res_articleController::class,'store'])->name('res_articles.store');
+Route::get('/res_articles',[Res_articleController::class,'index'])->name('res_articles.index');
+Route::get('/res_articles/edit/{id}',[Res_articleController::class,'edit'])->name('res_articles.edit');
+Route::put('/res_articles/update/{id}',[Res_articleController::class,'update'])->name('res_articles.update');
+Route::get('/res_articles/delete/{id}',[Res_articleController::class,'delete'])->name('res_articles.delete');
+
 // Featured Articles Section
 Route::get('/featured-article', [FeaturedArticleController::class, 'index'])->name('featured_article.index');
 Route::get('/featured-article/create', [FeaturedArticleController::class, 'create'])->name('featured_article.create');
@@ -198,4 +218,6 @@ Route::post('/services-section/store', [Services_sectionController::class, 'stor
 Route::get('/services-section/edit/{id}', [Services_sectionController::class, 'edit'])->name('services_section.edit');
 Route::put('/services-section/update/{id}', [Services_sectionController::class, 'update'])->name('services_section.update');
 Route::get('/services-section/delete/{id}', [Services_sectionController::class, 'delete'])->name('services_section.delete');
+
+
 });

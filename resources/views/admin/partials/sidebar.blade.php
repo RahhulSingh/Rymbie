@@ -195,13 +195,17 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('res_guides.index') }}">
+                <a class="nav-link {{ request()->routeIs('res_guides.*') ? 'active' : '' }}" href="{{ route('res_guides.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
                     </span>
                     <span class="nav-text">
                         Resource Guides
+                    </span>
+
+                </a>
+
                 <a class="nav-link {{ request()->routeIs('blog_article.*') ? 'active' : '' }}" href="{{ route('blog_article.index') }}">
 
                     <span class="nav-icon">
@@ -224,6 +228,27 @@
                         Service
                     </span>
 
+                </a>
+
+                <a class="nav-link {{ request()->routeIs('res_tools.*') ? 'active' : '' }}" href="{{ route('res_tools.index') }}">
+
+                    <span class="nav-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </span>
+
+                    <span class="nav-text">
+                        Resource Tool
+                    </span>
+
+                </a>
+
+                <a class="nav-link {{ request()->routeIs('res_articles.*') ? 'active' : '' }}" href="{{ route('res_articles.create') }}">
+                    <span class="nav-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </span>
+                    <span class="nav-text">
+                        Resource Articles
+                    </span>
                 </a>
 
             </div>
