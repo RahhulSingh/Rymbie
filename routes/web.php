@@ -15,6 +15,9 @@ use App\Http\Controllers\Res_heroController;
 use App\Http\Controllers\Res_guidesController;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Http\Controllers\FeaturedArticleController;
+use App\Http\Controllers\BlogArticleController;
+use App\Http\Controllers\Services_sectionController;
 
 use App\Http\Controllers\Frontend\HowWorksController;
 use App\Http\Controllers\Frontend\ServicesController;
@@ -172,4 +175,27 @@ Route::get('/res_guides',[Res_guidesController::class,'index'])->name('res_guide
 Route::get('/res_guides/edit/{id}',[Res_guidesController::class,'edit'])->name('res_guides.edit');
 Route::put('/res_guides/update/{id}',[Res_guidesController::class,'update'])->name('res_guides.update');
 Route::get('/res_guides/delete/{id}',[Res_guidesController::class,'delete'])->name('res_guides.delete');
+// Featured Articles Section
+Route::get('/featured-article', [FeaturedArticleController::class, 'index'])->name('featured_article.index');
+Route::get('/featured-article/create', [FeaturedArticleController::class, 'create'])->name('featured_article.create');
+Route::post('/featured-article/store', [FeaturedArticleController::class, 'store'])->name('featured_article.store');
+Route::get('/featured-article/edit/{id}', [FeaturedArticleController::class, 'edit'])->name('featured_article.edit');
+Route::put('/featured-article/update/{id}', [FeaturedArticleController::class, 'update'])->name('featured_article.update');
+Route::get('/featured-article/delete/{id}', [FeaturedArticleController::class, 'delete'])->name('featured_article.delete');
+
+// Blog/Articles Section
+Route::get('/blog-article', [BlogArticleController::class, 'index'])->name('blog_article.index');
+Route::get('/blog-article/create', [BlogArticleController::class, 'create'])->name('blog_article.create');
+Route::post('/blog-article/store', [BlogArticleController::class, 'store'])->name('blog_article.store');
+Route::get('/blog-article/edit/{id}', [BlogArticleController::class, 'edit'])->name('blog_article.edit');
+Route::put('/blog-article/update/{id}', [BlogArticleController::class, 'update'])->name('blog_article.update');
+Route::get('/blog-article/delete/{id}', [BlogArticleController::class, 'delete'])->name('blog_article.delete');
+
+// Services Section
+Route::get('/services-section', [Services_sectionController::class, 'index'])->name('services_section.index');
+Route::get('/services-section/create', [Services_sectionController::class, 'create'])->name('services_section.create');
+Route::post('/services-section/store', [Services_sectionController::class, 'store'])->name('services_section.store');
+Route::get('/services-section/edit/{id}', [Services_sectionController::class, 'edit'])->name('services_section.edit');
+Route::put('/services-section/update/{id}', [Services_sectionController::class, 'update'])->name('services_section.update');
+Route::get('/services-section/delete/{id}', [Services_sectionController::class, 'delete'])->name('services_section.delete');
 });

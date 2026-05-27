@@ -132,7 +132,7 @@
                 <p class="faq-bottom-subtitle">Didn't find your answer? Contact our support team.</p>
                 <div class="faq-contact-box">
                     <span class="faq-contact-text">Contact our support team.</span>
-                    <button class="faq-contact-btn" onclick="window.location.href='contact_us.html'">Contact Us</button>
+                    <button class="faq-contact-btn" onclick="window.location.href='{{route('frontend.contact_us')}}'">Contact Us</button>
                 </div>
             </section>
         </div>
