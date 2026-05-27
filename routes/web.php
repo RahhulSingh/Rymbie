@@ -11,6 +11,8 @@ use App\Http\Controllers\Academic_services_sectionController;
 use App\Http\Controllers\Assignments_title_sectionController;
 use App\Http\Controllers\Works_best_sectionController;
 use App\Http\Controllers\How_work_sectionController;
+use App\Http\Controllers\Res_heroController;
+use App\Http\Controllers\Res_guidesController;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
@@ -154,4 +156,20 @@ Route::get('/how_work_section',[How_work_sectionController::class,'index'])->nam
 Route::get('/how_work_section/edit/{id}',[How_work_sectionController::class,'edit'])->name('how_work_section.edit');
 Route::put('/how_work_section/update/{id}',[How_work_sectionController::class,'update'])->name('how_work_section.update');
 Route::get('/how_work_section/delete/{id}',[How_work_sectionController::class,'delete'])->name('how_work_section.delete');
+
+// Resource Heroes
+Route::get('/res_hero/create',[Res_heroController::class,'create'])->name('res_hero.create');
+Route::post('/res_hero/store',[Res_heroController::class,'store'])->name('res_hero.store');
+Route::get('/res_hero',[Res_heroController::class,'index'])->name('res_hero.index');
+Route::get('/res_hero/edit/{id}',[Res_heroController::class,'edit'])->name('res_hero.edit');
+Route::put('/res_hero/update/{id}',[Res_heroController::class,'update'])->name('res_hero.update');
+Route::get('/res_hero/delete/{id}',[Res_heroController::class,'delete'])->name('res_hero.delete');
+
+// Resource Guides
+Route::get('/res_guides/create',[Res_guidesController::class,'create'])->name('res_guides.create');
+Route::post('/res_guides/store',[Res_guidesController::class,'store'])->name('res_guides.store');
+Route::get('/res_guides',[Res_guidesController::class,'index'])->name('res_guides.index');
+Route::get('/res_guides/edit/{id}',[Res_guidesController::class,'edit'])->name('res_guides.edit');
+Route::put('/res_guides/update/{id}',[Res_guidesController::class,'update'])->name('res_guides.update');
+Route::get('/res_guides/delete/{id}',[Res_guidesController::class,'delete'])->name('res_guides.delete');
 });

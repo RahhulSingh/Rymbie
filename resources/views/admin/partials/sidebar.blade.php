@@ -41,7 +41,6 @@
         </a>
 
         {{-- ROLE --}}
-        @can('admin')
 
             <a class="nav-link {{ request()->routeIs('role.index') ? 'active' : '' }}"
                 href="{{ route('role.index') }}">
@@ -55,8 +54,6 @@
                 </span>
 
             </a>
-
-        @endcan
 
         {{-- USERS --}}
         <a class="nav-link {{ request()->routeIs('admin.user') ? 'active' : '' }}"
@@ -173,12 +170,34 @@
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
                     </span>
-
                     <span class="nav-text">
                         How Work Section
                     </span>
 
                 </a>
+
+                <a class="nav-link" href="{{ route('res_hero.index') }}">
+
+                    <span class="nav-icon">
+                        <i class="bi bi-file-earmark"></i>
+                    </span>
+                    <span class="nav-text">
+                        Resource Heroes
+                    </span>
+
+                </a>
+
+                <a class="nav-link" href="{{ route('res_guides.index') }}">
+
+                    <span class="nav-icon">
+                        <i class="bi bi-file-earmark"></i>
+                    </span>
+                    <span class="nav-text">
+                        Resource Guides
+                    </span>
+
+                </a>
+
 
             </div>
 
