@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class works_best_section extends Model
+class Contactus_socalmediya extends Model
 {
     use HasFactory;
-    protected $table = 'works_best_sections';
     protected $fillable = [
+        'image',
         'title',
+        'content',
     ];
 }

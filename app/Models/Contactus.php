@@ -5,11 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class works_best_section extends Model
+class Contactus extends Model
 {
     use HasFactory;
-    protected $table = 'works_best_sections';
     protected $fillable = [
-        'title',
+        'name',
+        'email',
+        'phone',
+        'message',
+        'subject',
+        'file',
+        'preferred_contact',
+        'terms',
     ];
 }

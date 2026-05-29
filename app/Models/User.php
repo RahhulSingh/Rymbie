@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
+        'phone',
     ];
 
     /**
@@ -53,6 +55,10 @@ class User extends Authenticatable
         return $this->role && $this->role->slug === $roleSlug;
     }
 
+    public function assignmentBriefs()
+    {
+        return $this->hasMany(AssignmentBrief::class);
+    }
     public function hasPermission($permissionSlug) {
     if ($this->role) {
         return $this->role->permissions()->where('slug', $permissionSlug)->exists();

@@ -16,25 +16,47 @@
   <section class="login_up">
     <div class="container">
       <div class="login_form">
-        <form class="card">
+        <form class="card" action="{{ route('frontend.register.store') }}" method="POST">
+          @csrf
           <div class="peraheding_bix">
             <h1 class="one_hedding">Create Your Account</h1>
             <p class="subtitle">Sign up to get expert help on assignments, dissertations & more.</p>
           </div>
+          @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-2"></i>
+                {{ session('success') }}
+            </div>
+        @endif
           <div class="field">
-            <input type="text" placeholder="Full Name" autocomplete="name" />
+            <input type="text" name="name" placeholder="Full Name" value="{{ old('name') }}" autocomplete="name" />
+            @error('name')
+                      <div class="text-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="field">
-            <input type="email" placeholder="Email Address" autocomplete="email" />
+            <input type="email" name="email" placeholder="Email Address" value="{{ old('email') }}" autocomplete="email" />
+            @error('email')
+                      <div class="text-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="field">
-            <input type="tel" placeholder="Phone Number" autocomplete="tel" />
+            <input type="tel" name="phone" placeholder="Phone Number" value="{{ old('phone') }}" autocomplete="tel" />
+            @error('phone')
+                      <div class="text-danger">{{ $message }}</div>
+            @enderror 
           </div>
           <div class="field">
-            <input type="password" placeholder="Password" autocomplete="new-password" />
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password" />
+            @error('password')
+                      <div class="text-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="field">
-            <input type="password" placeholder="Confirm Password" autocomplete="new-password" />
+            <input type="password" name="password_confirmation" placeholder="Confirm Password" autocomplete="new-password" />
+            @error('password_confirmation')
+                      <div class="text-danger">{{ $message }}</div>
+            @enderror
           </div>
 
           <button class="register_button">Register Now</button>

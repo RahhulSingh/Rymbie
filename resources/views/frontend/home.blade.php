@@ -7,8 +7,8 @@
         <div class="row align-items-center">
             <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                 <div class="hero_box">
-                    <h1>{{$hero->title}}</h1>
-                    {!! $hero->content !!}
+                    <h1>{{$hero->title ?? ''}}</h1>
+                    {!! $hero->content ?? '' !!}
                     <div class="start_your_journey">
                         <a href="#" class="start_your">Start Your Journey</a>
                         <a href="#" class="getfree_tuch">Get Free Quote</a>
@@ -36,7 +36,7 @@
                     
                     <div class="feature_itemsdr">
                         <i class="fa-solid fa-circle-check"></i>
-                        <span>{{$step->title}}</span>
+                        <span>{{$step->title ?? ''}}</span>
                     </div>
                 </div>
             @endforeach
@@ -57,10 +57,10 @@
             <div class="col-4">
                 <div class="process_boxsest {{ $loop->last ? 'last-box' : '' }}">
                     <div class="process_icon">
-                        <i class="{{ $academic->icon }}"></i>
+                        <i class="{{ $academic->icon ?? '' }}"></i>
                     </div>
 
-                    <h3>{{ $academic->title }}</h3>
+                    <h3>{{ $academic->title ?? '' }}</h3>
                 </div>
             </div>
             @endforeach

@@ -14,27 +14,15 @@
       <div class="row justify-content-center">
         <div class="col-12  col-xl-10">
           <div class="row">
+            @foreach ($contactus_socalmediyas as $socalmediya)
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
               <a href="#" class="whatsapp_title mt-4">
-                <img src="{{asset('assets/frontend/images/whatsapp.svg')}}" alt="WhatsApp">
-                <h3>91 7973253877</h3>
-                <p>Tap to chat</p>
+                <img src="{{ asset('/uploads/contactus_socalmediya/' . $socalmediya->image) }}" alt="Image">
+                <h3>{{ $socalmediya->title }}</h3>
+                <p>{{ $socalmediya->content }}</p>
               </a>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-              <a href="#" class="whatsapp_title mt-4">
-                <img src="{{asset('assets/frontend/images/email-us.svg')}}" alt="WhatsApp">
-                <h3>support@rymbie.com</h3>
-                <p>Email us</p>
-              </a>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-              <a href="#" class="whatsapp_title mt-4">
-                <img src="{{asset('assets/frontend/images/call-receive.svg')}}" alt="WhatsApp">
-                <h3>+91 7973253877</h3>
-                <p>Call us anytime</p>
-              </a>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -46,30 +34,55 @@
         <div class="col-12 col-xl-11">
           <div class="contact_us_box">
             <h2 class="contact_title">Contact Us</h2>
-            <form>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <form action="{{ route('contact.store') }}"method="POST"enctype="multipart/form-data">
+              @csrf
               <div class="form_row">
                 <div class="form_group">
                   <label>Full Name</label>
-                  <input type="text" class="form_control">
+                  <input type="text" class="form_control" name="name" value="{{ old('name') }}">
+                  @error('name')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="form_group">
                   <label>Email Address</label>
-                  <input type="text" class="form_control">
+                  <input type="email" class="form_control" name="email" value="{{ old('email') }}">
+                  @error('email')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
               <div class="form_row">
                 <div class="form_group full_width">
-                  <input type="text" placeholder="Phone Number" class="form_control">
+                  <input type="text" placeholder="Phone Number" class="form_control" name="phone" value="{{ old('phone') }}">
+                  @error('phone')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
               <div class="form_row">
                 <div class="form_group full_width">
                   <label>Subject</label>
                   <div class="select_wrapperwe">
-                    <select class="form_control font_size_14">
-                      <option>Assignment</option>
-                      <option>Project</option>
-                      <option>Support</option>
+                    <select class="form_control font_size_14" name="subject">
+                        <option value="">Select Subject</option>
+                        <option value="Assignment">Assignment</option>
+                        <option value="Project">Project</option>
+                        <option value="Support">Support</option>
                     </select>
 
                     <span class="select_icon">
@@ -78,13 +91,16 @@
                           stroke-linecap="round" stroke-linejoin="round" />
                       </svg>
 
-                    </span>
+                    </span> 
                   </div>
                 </div>
               </div>
               <div class="form_row">
                 <div class="form_group full_width">
-                  <textarea class="form_control" placeholder="Message"></textarea>
+                  <textarea class="form_control" placeholder="Message" name="message">{{ old('message') }}</textarea>
+                  @error('message')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
 
@@ -93,7 +109,7 @@
                   <label>Attach Brief <span class="optional_box">(optional)</span> </span>
                     <label class="file_upload">
 
-                      <input type="file" id="fileInput" hidden>
+                      <input type="file" name="file" id="fileInput" hidden>
 
                       <span id="fileName">
                         Choose file...
@@ -110,34 +126,32 @@
                 <label>Preferred contact:</label>
                 <div class="radio_wrapper">
                   <label>
-                    <input type="radio" checked name="contact">
+                    <input type="radio" value="whatsapp" checked name="preferred_contact">
                     WhatsApp
                   </label>
                   <label>
-                    <input type="radio" name="contact">
+                    <input type="radio" value="email" name="preferred_contact">
                     Email
                   </label>
 
                   <label>
-                    <input type="radio" name="contact">
+                    <input type="radio" value="call" name="preferred_contact">
                     Call
                   </label>
                 </div>
               </div>
               <div class="checkbox_wrapper">
-                <input type="checkbox">
+                <input type="checkbox" name="terms" value="1" required>
                 <p>
                   I agree to the:
                   <a href="privacy_policy.html">Terms & Privacy Policy</a>
                 </p>
               </div>
-              <button class="submit_btn">
+              <button type="submit" class="submit_btn">
                 Send Message
               </button>
             </form>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -154,7 +168,6 @@
         </p>
       </div>
     </div>
-
   </section>
 @endsection
   <script>

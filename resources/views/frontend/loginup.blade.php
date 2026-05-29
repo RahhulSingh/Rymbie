@@ -16,24 +16,37 @@
   <section class="login_up register_now">
     <div class="container">
       <div class="login_form">
-        <form class="card register_form">
+        <form class="card register_form" action="{{ route('frontend.login.check') }}" method="POST">
+          @csrf
           <div class="peraheding_bix">
             <h1 class="one_hedding">Welcome Back</h1>
             <p class="subtitle">Log in to access your dashboard and get assignment support.</p>
           </div>
+          @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-2"></i>
+                {{ session('success') }}
+            </div>
+        @endif
           <div class="field">
             <label>Email Address</label>
-            <input type="email" autocomplete="email" />
+            <input type="email" name="email" autocomplete="email" />
+            @error('email')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
           </div>
 
           <div class="field">
             <label>Password</label>
-            <input type="password" autocomplete="new-password" />
+            <input type="password" name="password" autocomplete="new-password" />
+            @error('password')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
           </div>
 
 
           <button class="register_button">Login Now</button>
-
+          
           <p class="already_textlogin_move"> Don’t have an account? <a href="{{route('frontend.register')}}"> Register here </a> </p>
         </form>
       </div>

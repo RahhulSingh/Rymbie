@@ -69,6 +69,19 @@
 
         </a>
 
+        <a class="nav-link {{ request()->routeIs('admin.students.index') ? 'active' : '' }}"
+            href="{{ route('admin.students.index') }}">
+
+            <span class="nav-icon">
+                <i class="fa-solid fa-user-graduate"></i>
+            </span>
+
+            <span class="nav-text">
+                Students
+            </span>
+
+        </a>
+
         {{-- PROFILE --}}
         <a class="nav-link" href="{{ route('admin.profile') }}">
 
@@ -78,6 +91,16 @@
 
             <span class="nav-text">
                 Profile
+            </span>
+
+        </a>
+
+        <a class="nav-link" href="{{ route('admin.contactus.index') }}">
+            <span class="nav-icon">
+                <i class="bi bi-person-lines-fill"></i>
+            </span>
+            <span class="nav-text">
+                Contact Us Queries
             </span>
 
         </a>
@@ -183,6 +206,9 @@
                     </span>
                     <span class="nav-text">
                         Resource Heroes
+                    </span>
+
+                </a>
                 <a class="nav-link {{ request()->routeIs('featured_article.*') ? 'active' : '' }}" href="{{ route('featured_article.index') }}">
 
                     <span class="nav-icon">
@@ -209,7 +235,7 @@
                 <a class="nav-link {{ request()->routeIs('blog_article.*') ? 'active' : '' }}" href="{{ route('blog_article.index') }}">
 
                     <span class="nav-icon">
-                        <i class="bi bi-journal-text"></i>
+                        <i class="bi bi-file-earmark"></i>
                     </span>
 
                     <span class="nav-text">
@@ -221,7 +247,7 @@
                 <a class="nav-link {{ request()->routeIs('services_section.*') ? 'active' : '' }}" href="{{ route('services_section.index') }}">
 
                     <span class="nav-icon">
-                        <i class="bi bi-journal-text"></i>
+                        <i class="bi bi-file-earmark"></i>
                     </span>
 
                     <span class="nav-text">
@@ -233,7 +259,7 @@
                 <a class="nav-link {{ request()->routeIs('res_tools.*') ? 'active' : '' }}" href="{{ route('res_tools.index') }}">
 
                     <span class="nav-icon">
-                        <i class="bi bi-journal-text"></i>
+                        <i class="bi bi-file-earmark"></i>
                     </span>
 
                     <span class="nav-text">
@@ -242,12 +268,21 @@
 
                 </a>
 
-                <a class="nav-link {{ request()->routeIs('res_articles.*') ? 'active' : '' }}" href="{{ route('res_articles.create') }}">
+                <a class="nav-link {{ request()->routeIs('res_articles.*') ? 'active' : '' }}" href="{{ route('res_articles.index') }}">
                     <span class="nav-icon">
-                        <i class="bi bi-journal-text"></i>
+                        <i class="bi bi-file-earmark"></i>
                     </span>
                     <span class="nav-text">
                         Resource Articles
+                    </span>
+                </a>
+
+                <a class="nav-link {{ request()->routeIs('contactus_socalmediya.*') ? 'active' : '' }}" href="{{ route('contactus_socalmediya.create') }}">
+                    <span class="nav-icon">
+                        <i class="bi bi-file-earmark"></i>
+                    </span>
+                    <span class="nav-text">
+                        Contactus Socalmediya
                     </span>
                 </a>
 

@@ -20,6 +20,8 @@ use App\Http\Controllers\BlogArticleController;
 use App\Http\Controllers\Services_sectionController;
 use App\Http\Controllers\res_toolController;
 use App\Http\Controllers\Res_articleController;
+use App\Http\Controllers\contactus_socalmediyaController;
+use App\Http\Controllers\StudentController;
 
 use App\Http\Controllers\Frontend\HowWorksController;
 use App\Http\Controllers\Frontend\ServicesController;
@@ -54,15 +56,24 @@ use App\Http\Controllers\Frontend\ProgramStackController;
 */
 Route::get('/',[HomeController::class,'index'])->name('home');
 
+
+// Login and Register routes for frontend 
+Route::post('/register/store', [RegisterController::class, 'registerStore'])->name('frontend.register.store'); 
+Route::post('/login/check', [LoginController::class, 'loginCheck'])->name('frontend.login.check'); 
+Route::get('/logout', [LoginController::class, 'logout'])->name('frontend.logout');
+
+
 Route::get('/how-works', [HowWorksController::class, 'index'])->name('frontend.how.works');
 Route::get('/services', [ServicesController::class, 'index'])->name('frontend.services');
 Route::get('/ai-tools', [AiToolsController::class, 'index'])->name('frontend.ai.tools');
 Route::get('/assignment-brief', [AssignmentBriefController::class, 'index'])->name('frontend.assignment_brief');
+Route::post('/assignment-brief/store', [AssignmentBriefController::class, 'store'])->name('assignment-brief.store');
 Route::get('/careers', [CareersController::class, 'index'])->name('frontend.careers');
 Route::get('/articles', [ArticlesController::class, 'index'])->name('frontend.articles');
 Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('frontend.testimonials');
 Route::get('/faq', [FaqController::class, 'index'])->name('frontend.faq');
 Route::get('/contact_us', [ContactUsController::class, 'index'])->name('frontend.contact_us');
+Route::post('/contact-store',[ContactUsController::class,'store'])->name('contact.store');
 Route::get('/samples', [SamplesController::class, 'index'])->name('frontend.samples');
 Route::get('/resources', [ResourcesController::class, 'index'])->name('frontend.resources');
 Route::get('/live_chat', [LiveChatController::class, 'index'])->name('frontend.live_chat');
@@ -75,7 +86,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('frontend.about');
 Route::get('/student_resources', [StudentResourcesController::class, 'index'])->name('frontend.student_resources');
 Route::get('/program_stack', [ProgramStackController::class, 'index'])->name('frontend.program_stack');
 
-//Auth routes
+// Admin Auth routes
 Route::get('/register',[AuthController::class,'showRegister'])->name('showRegister');
 Route::post('/register',[AuthController::class,'register'])->name('store');
 Route::get('admin/login',[AuthController::class,'showLogin'])->name('showLogin');
@@ -105,6 +116,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/table', function () {
             return view('admin.tables');
         })->name('admin.table');
+
+Route::get('/admin/contactus',[ContactUsController::class,'show'])->name('admin.contactus.index');
 
 Route::get('/role',[RoleController::class,'index'])->name('role.index');
 Route::get('/create-role',[RoleController::class,'create'])->name('role.create');
@@ -174,6 +187,7 @@ Route::get('/res_hero/delete/{id}',[Res_heroController::class,'delete'])->name('
 Route::get('/res_guides/create',[Res_guidesController::class,'create'])->name('res_guides.create');
 Route::post('/res_guides/store',[Res_guidesController::class,'store'])->name('res_guides.store');
 Route::get('/res_guides',[Res_guidesController::class,'index'])->name('res_guides.index');
+Route::get('/guide-download/{id}',[Res_guidesController::class,'download'])->name('guide.download');
 Route::get('/res_guides/edit/{id}',[Res_guidesController::class,'edit'])->name('res_guides.edit');
 Route::put('/res_guides/update/{id}',[Res_guidesController::class,'update'])->name('res_guides.update');
 Route::get('/res_guides/delete/{id}',[Res_guidesController::class,'delete'])->name('res_guides.delete');
@@ -219,5 +233,15 @@ Route::get('/services-section/edit/{id}', [Services_sectionController::class, 'e
 Route::put('/services-section/update/{id}', [Services_sectionController::class, 'update'])->name('services_section.update');
 Route::get('/services-section/delete/{id}', [Services_sectionController::class, 'delete'])->name('services_section.delete');
 
+// Contactus -Socalmediya Section
+Route::get('/contactus-socalmediya', [Contactus_socalmediyaController::class, 'index'])->name('contactus_socalmediya.index');
+Route::get('/contactus-socalmediya/create', [Contactus_socalmediyaController::class, 'create'])->name('contactus_socalmediya.create');
+Route::post('/contactus-socalmediya/store', [Contactus_socalmediyaController::class, 'store'])->name('contactus_socalmediya.store');
+Route::get('/contactus-socalmediya/edit/{id}', [Contactus_socalmediyaController::class, 'edit'])->name('contactus_socalmediya.edit');
+Route::put('/contactus-socalmediya/update/{id}', [Contactus_socalmediyaController::class, 'update'])->name('contactus_socalmediya.update');
+Route::get('/contactus-socalmediya/delete/{id}', [Contactus_socalmediyaController::class, 'delete'])->name('contactus_socalmediya.delete');
 
+//Student Routes
+Route::get('/students',[StudentController::class,'index'])->name('admin.students.index');
+Route::get('/students/delete/{id}',[StudentController::class,'delete'])->name('admin.students.delete');
 });

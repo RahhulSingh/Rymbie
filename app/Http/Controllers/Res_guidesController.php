@@ -39,6 +39,16 @@ class Res_guidesController extends Controller
         return redirect()->route('res_guides.index');
     }
 
+    public function download($id)
+    {
+
+        $guide = res_guide::findOrFail($id);
+        $path = public_path(
+            'uploads/res_guides_files/' . $guide->file
+        );
+        return response()->download($path);
+
+    }
     public function edit($id)
     {
         $res_guide = res_guide::findOrFail($id);

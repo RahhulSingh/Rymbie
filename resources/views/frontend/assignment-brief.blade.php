@@ -1,12 +1,24 @@
 @extends('partials.app')
 @section('title', 'Assignment Brief')
 @section('content')
+<style>
+    .brief-success-banner{
+    display:none;
+}
+
+.brief-success-banner.show{
+    display:flex;
+}
+</style>
         <section class="assignment_brief_section">
             <div class="container">
                 <div class="brief-container">
                     <h1 class="brief-title">Let’s Get Started With Your Assignment</h1>
                     <div class="brief-card">
-                        <form id="assignment-form" onsubmit="handleFormSubmit(event);">
+                        <div id="ajax-error" class="alert alert-danger" style="display:none;"></div>
+                        <form id="assignment-form"action="{{ route('assignment-brief.store') }}"method="POST"enctype="multipart/form-data">
+                            @csrf
+                            <div id="ajax-error" class="alert alert-danger" style="display:none;"></div>
                             <div class="brief-upload-row">
                                 <div class="brief-upload-box" id="brief-box" onclick="triggerFileInput('brief-file');"
                                     ondragover="handleDragOver(event);" ondragleave="handleDragLeave(event);"
@@ -16,8 +28,9 @@
                                     </div>
                                     <div class="brief-upload-title">Upload Assignment Brief</div>
                                     <div class="brief-upload-formats">PDF, DOC</div>
-                                    <input type="file" id="brief-file" name="brief-file" accept=".pdf,.doc,.docx"
+                                    <input type="file" id="brief-file" name="brief_file" accept=".pdf,.doc,.docx"
                                         style="display: none;" onchange="handleFileSelect(this, 'brief-box');" />
+                                       <span class="text-danger brief_file_error"></span>
                                 </div>
 
                                 <!-- Upload Screenshot or Photo-->
@@ -32,17 +45,19 @@
                                         Photo
                                     </div>
                                     <div class="brief-upload-formats">JPG, PNG</div>
-                                    <input type="file" id="screenshot-file" name="screenshot-file"
+                                    <input type="file" id="screenshot-file" name="photo"
                                         accept="image/jpeg,image/png" style="display: none;"
                                         onchange="handleFileSelect(this, 'screenshot-box');" />
+                                        <span class="text-danger photo_error"></span>
                                 </div>
 
                             </div>
 
                             <!-- Extra Instructions Textarea Field -->
                             <div class="brief-form-group">
-                                <textarea class="brief-textarea" id="extra-instructions" name="extra-instructions"
+                                <textarea class="brief-textarea" id="extra-instructions" name="extra_instructions"
                                     placeholder="Extra Instructions"></textarea>
+                                <span class="text-danger extra_instructions_error"></span>
                             </div>
 
                             <div class="brief-form-group" id="date-group" onclick="focusNativeDatePicker();">
@@ -68,6 +83,7 @@
                                 </div>
                                 <input type="date" class="brief-native-date" id="native-date" name="deadline"
                                     onchange="handleDateChange(this);" />
+                                    <span class="text-danger deadline_error"></span>
                             </div>
 
                             <!-- Select Subject Select Box-->
@@ -101,6 +117,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" id="selected-subject-value" name="subject" value="" />
+                                <span class="text-danger subject_error"></span>
                             </div>
 
                             <!-- Submit Button -->
@@ -130,7 +147,6 @@
                 </div>
             </div>
         </section>
-    @endsection
     <script>
         function triggerFileInput(inputId) {
             document.getElementById(inputId).click();
@@ -255,25 +271,141 @@
         });
 
         // Form Submit Simulation logic
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const spinner = document.getElementById('submit-spinner');
-            const btnText = document.getElementById('submit-btn-text');
-            const btn = document.getElementById('submit-btn');
-            const successBanner = document.getElementById('success-banner');
-            // Trigger submit animations
-            spinner.style.display = 'inline-block';
-            btnText.textContent = 'Submitting...';
-            btn.disabled = true;
-            successBanner.classList.remove('show');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                btnText.textContent = 'Submit Assignment Brief';
-                btn.disabled = false;
-                successBanner.classList.add('show');
-                setTimeout(() => {
-                    successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
-            }, 1200);
-        }
+        // function handleFormSubmit(e) {
+        //     e.preventDefault();
+        //     const spinner = document.getElementById('submit-spinner');
+        //     const btnText = document.getElementById('submit-btn-text');
+        //     const btn = document.getElementById('submit-btn');
+        //     const successBanner = document.getElementById('success-banner');
+        //     // Trigger submit animations
+        //     spinner.style.display = 'inline-block';
+        //     btnText.textContent = 'Submitting...';
+        //     btn.disabled = true;
+        //     successBanner.classList.remove('show');
+        //     setTimeout(() => {
+        //         spinner.style.display = 'none';
+        //         btnText.textContent = 'Submit Assignment Brief';
+        //         btn.disabled = false;
+        //         successBanner.classList.add('show');
+        //         setTimeout(() => {
+        //             successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        //         }, 100);
+        //     }, 1200);
+        // }
     </script>
+<script>
+
+document.getElementById('assignment-form').addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    let form = this;
+
+    let formData = new FormData(form);
+
+    // Clear old errors
+    document.querySelectorAll('.text-danger').forEach(el => {
+        el.innerHTML = '';
+    });
+
+    // Hide old error box
+    document.getElementById('ajax-error').style.display = 'none';
+
+    // Loading button
+    const spinner = document.getElementById('submit-spinner');
+    const btnText = document.getElementById('submit-btn-text');
+    const btn = document.getElementById('submit-btn');
+
+    spinner.style.display = 'inline-block';
+    btnText.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    fetch(form.action, {
+
+        method: 'POST',
+
+        body: formData,
+
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Accept': 'application/json'
+        }
+
+    })
+
+    .then(async response => {
+
+        let data = await response.json();
+
+        // Validation errors
+        if(response.status === 422){
+
+            let errors = data.errors;
+
+            Object.keys(errors).forEach(key => {
+
+                let errorElement = document.querySelector('.' + key + '_error');
+
+                if(errorElement){
+
+                    errorElement.innerHTML = errors[key][0];
+
+                }
+
+            });
+
+        }
+
+        // Login / role errors
+        else if(response.status === 403){
+
+            document.getElementById('ajax-error').style.display = 'block';
+
+            document.getElementById('ajax-error').innerHTML = data.message;
+
+        }
+
+        // Success
+        else{
+
+            document.getElementById('success-banner').classList.add('show');
+
+            form.reset();
+
+            // Reset subject text
+            document.getElementById('selected-subject-label').innerHTML = 'Subject';
+
+            // Reset deadline display
+            document.getElementById('date-display').value = '';
+
+            // Hide ajax error
+            document.getElementById('ajax-error').style.display = 'none';
+            // Remove uploaded badges
+            document.querySelectorAll('.brief-file-badge').forEach(el => {
+                el.remove();
+            });
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+    })
+
+    .finally(() => {
+
+        spinner.style.display = 'none';
+
+        btnText.textContent = 'Submit Assignment Brief';
+
+        btn.disabled = false;
+
+    });
+
+});
+
+</script>
+@endsection
