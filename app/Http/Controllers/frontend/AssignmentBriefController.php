@@ -12,9 +12,6 @@ class AssignmentBriefController extends Controller
     {
         return view('frontend.assignment-brief');
     }
-
-    
-
     public function store(Request $request)
     {
         if(!Auth::check())
@@ -57,7 +54,7 @@ class AssignmentBriefController extends Controller
             );
         }
 
-        assignment_brief::create([
+        assignment_brief::create([ 
             'user_id' => Auth::id(),
             'brief_file' => $assignmentFile,
             'photo' => $photo,
@@ -69,5 +66,12 @@ class AssignmentBriefController extends Controller
     'success' => true,
     'message' => 'Assignment Submitted Successfully'
 ]);
+    }
+
+
+public function show()
+    {
+        $assignment = assignment_brief::with('user')->get();
+        return view('admin.assignment_brief.index', compact('assignment'));
     }
 }

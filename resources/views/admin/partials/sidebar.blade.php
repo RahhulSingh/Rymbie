@@ -81,6 +81,16 @@
             </span>
 
         </a>
+        <a class="nav-link {{ request()->routeIs('admin.employees.index') ? 'active' : '' }}"
+            href="{{ route('admin.employees.index') }}">
+            <span class="nav-icon">
+                <i class="bi bi-person-rolodex"></i>
+            </span>
+            <span class="nav-text">
+                Employee
+            </span>
+
+        </a>
 
         {{-- PROFILE --}}
         <a class="nav-link" href="{{ route('admin.profile') }}">
@@ -101,6 +111,16 @@
             </span>
             <span class="nav-text">
                 Contact Us Queries
+            </span>
+
+        </a>
+
+        <a class="nav-link" href="{{ route('admin.assignment_briefs.show') }}">
+            <span class="nav-icon">
+                <i class="bi bi-person-vcard"></i>
+            </span>
+            <span class="nav-text">
+                Assignment Briefs
             </span>
 
         </a>

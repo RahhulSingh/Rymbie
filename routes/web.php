@@ -22,6 +22,7 @@ use App\Http\Controllers\res_toolController;
 use App\Http\Controllers\Res_articleController;
 use App\Http\Controllers\contactus_socalmediyaController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\EmployeeController;
 
 use App\Http\Controllers\Frontend\HowWorksController;
 use App\Http\Controllers\Frontend\ServicesController;
@@ -117,7 +118,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
             return view('admin.tables');
         })->name('admin.table');
 
-Route::get('/admin/contactus',[ContactUsController::class,'show'])->name('admin.contactus.index');
+Route::get('/contactus',[ContactUsController::class,'show'])->name('admin.contactus.index');
+Route::get('/contactus/delete/{id}',[ContactUsController::class,'delete'])->name('admin.contactus.delete');
+
+Route::get('/assignment-briefs',[AssignmentBriefController::class,'show'])->name('admin.assignment_briefs.show');
+Route::get('/assignment-briefs/delete/{id}',[AssignmentBriefController::class,'delete'])->name('admin.assignment_briefs.delete');
 
 Route::get('/role',[RoleController::class,'index'])->name('role.index');
 Route::get('/create-role',[RoleController::class,'create'])->name('role.create');
@@ -125,6 +130,14 @@ Route::post('/store-role',[RoleController::class,'store'])->name('role.store');
 Route::get('/edit-role/{id}',[RoleController::class,'edit'])->name('role.edit');
 Route::post('/update-role/{id}',[RoleController::class,'update'])->name('role.update');
 Route::get  ('/delete-role/{id}',[RoleController::class,'delete'])->name('role.delete');
+
+// Employee Routes
+Route::get('/employees',[EmployeeController::class,'index'])->name('admin.employees.index');
+Route::get('/employees/create',[EmployeeController::class,'create'])->name('admin.employees.create');
+Route::post('/employees/store',[EmployeeController::class,'store'])->name('admin.employees.store');
+Route::get('/employees/edit/{id}',[EmployeeController::class,'edit'])->name('admin.employees.edit');
+Route::put('/employees/update/{id}',[EmployeeController::class,'update'])->name('admin.employees.update');
+Route::get('/employees/delete/{id}',[EmployeeController::class,'delete'])->name('admin.employees.delete');
 
 // Hero Section
 Route::get('/hero_section/create',[Hero_sectionController::class,'create'])->name('hero_section.create');

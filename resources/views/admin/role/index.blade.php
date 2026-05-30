@@ -29,6 +29,12 @@
         </div>
         <div class="table-responsive">
             <table class="table align-middle mb-0" id="ordersTable" data-searchable-table>
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <thead>
                     <tr>
                         <th>SL</th>

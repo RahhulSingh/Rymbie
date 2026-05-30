@@ -23,6 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'created_by',
     ];
 
     /**
@@ -58,6 +59,10 @@ class User extends Authenticatable
     public function assignmentBriefs()
     {
         return $this->hasMany(AssignmentBrief::class);
+    }
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
     public function hasPermission($permissionSlug) {
     if ($this->role) {
