@@ -93,19 +93,16 @@
         </a>
 
         {{-- PROFILE --}}
-        <a class="nav-link" href="{{ route('admin.profile') }}">
-
+        <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' : '' }}" href="{{ route('admin.profile') }}">
             <span class="nav-icon">
                 <i class="bi bi-person-badge"></i>
             </span>
-
             <span class="nav-text">
                 Profile
             </span>
-
         </a>
 
-        <a class="nav-link" href="{{ route('admin.contactus.index') }}">
+        <a class="nav-link {{ request()->routeIs('admin.contactus.index') ? 'active' : '' }}" href="{{ route('admin.contactus.index') }}">
             <span class="nav-icon">
                 <i class="bi bi-person-lines-fill"></i>
             </span>
@@ -115,7 +112,7 @@
 
         </a>
 
-        <a class="nav-link" href="{{ route('admin.assignment_briefs.show') }}">
+        <a class="nav-link {{ request()->routeIs('admin.assignment_briefs.show') ? 'active' : '' }}" href="{{ route('admin.assignment_briefs.show') }}">
             <span class="nav-icon">
                 <i class="bi bi-person-vcard"></i>
             </span>
@@ -131,24 +128,20 @@
             <button class="cms-dropdown-btn hytyt" type="button">
 
                 <div class="my_flex">
-
                     <span class="nav-icon">
                         <i class="bi bi-layout-text-window"></i>
                     </span>
-
                     <span class="nav-text yyyyold">
                         Frontend CMS
                     </span>
-
                 </div>
-
                 <i class="bi bi-chevron-down dropdown-arrow"></i>
 
             </button>
 
             <div class="cms-dropdown-menu">
 
-                <a class="nav-link" href="{{ route('hero_section.index') }}">
+                <a class="nav-link {{ request()->routeIs('hero_section.index') ? 'active' : '' }}" href="{{ route('hero_section.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -160,7 +153,7 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('step_process_section.index') }}">
+                <a class="nav-link {{ request()->routeIs('step_process_section.index') ? 'active' : '' }}" href="{{ route('step_process_section.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -172,7 +165,7 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('academic_services_section.index') }}">
+                <a class="nav-link {{ request()->routeIs('academic_services_section.index') ? 'active' : '' }}" href="{{ route('academic_services_section.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -184,7 +177,7 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('assignments_title_section.index') }}">
+                <a class="nav-link {{ request()->routeIs('assignments_title_section.index') ? 'active' : '' }}" href="{{ route('assignments_title_section.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -196,7 +189,7 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('works_best_section.index') }}">
+                <a class="nav-link {{ request()->routeIs('works_best_section.index') ? 'active' : '' }}" href="{{ route('works_best_section.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -208,7 +201,7 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('how_work_section.index') }}">
+                <a class="nav-link {{ request()->routeIs('how_work_section.index') ? 'active' : '' }}" href="{{ route('how_work_section.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -219,7 +212,7 @@
 
                 </a>
 
-                <a class="nav-link" href="{{ route('res_hero.index') }}">
+                <a class="nav-link {{ request()->routeIs('res_hero.index') ? 'active' : '' }}" href="{{ route('res_hero.index') }}">
 
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
@@ -297,7 +290,7 @@
                     </span>
                 </a>
 
-                <a class="nav-link {{ request()->routeIs('contactus_socalmediya.*') ? 'active' : '' }}" href="{{ route('contactus_socalmediya.create') }}">
+                <a class="nav-link {{ request()->routeIs('contactus_socalmediya.*') ? 'active' : '' }}" href="{{ route('contactus_socalmediya.index') }}">
                     <span class="nav-icon">
                         <i class="bi bi-file-earmark"></i>
                     </span>
