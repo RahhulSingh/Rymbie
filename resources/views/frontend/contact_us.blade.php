@@ -17,7 +17,7 @@
             @foreach ($contactus_socalmediyas as $socalmediya)
             <div class="col-12 col-md-6 col-lg-4 col-xl-4">
               <a href="#" class="whatsapp_title mt-4">
-                <img src="{{ asset('/uploads/contactus_socalmediya/' . $socalmediya->image) }}" alt="Image">
+                <img src="{{ asset('pu/uploads/contactus_socalmediya/' . $socalmediya->image) }}" alt="Image">
                 <h3>{{ $socalmediya->title }}</h3>
                 <p>{{ $socalmediya->content }}</p>
               </a>
@@ -34,7 +34,7 @@
         <div class="col-12 col-xl-11">
           <div class="contact_us_box">
             <h2 class="contact_title">Contact Us</h2>
-            @if ($errors->any())
+            <!-- @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -42,7 +42,8 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif -->
+
             @if(session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -147,6 +148,12 @@
                   <a href="privacy_policy.html">Terms & Privacy Policy</a>
                 </p>
               </div>
+              {!! NoCaptcha::display() !!}
+              @error('g-recaptcha-response')
+            <div class="text-danger mt-2 mb-2">
+                {{ $message }}
+            </div>
+            @enderror
               <button type="submit" class="submit_btn">
                 Send Message
               </button>
@@ -169,7 +176,7 @@
       </div>
     </div>
   </section>
-@endsection
+ {!! NoCaptcha::renderJs() !!}
   <script>
     const fileInput = document.getElementById('fileInput');
     const fileName = document.getElementById('fileName');
@@ -183,4 +190,7 @@
       }
 
     });
+
+  
   </script>
+  @endsection

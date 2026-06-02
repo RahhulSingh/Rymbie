@@ -7484,3 +7484,100 @@ p {
         font-size: 14px;
     }
 }
+
+*{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+  
+    .forgot_section{
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0B2A52;
+    }
+
+    .forgot_section .forgot-box{
+      width:100%;
+      max-width:420px;
+      background:#fff;
+      padding:40px 30px;
+      border-radius:18px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .forgot_section .forgot-box h1{
+      text-align:center;
+      font-size:32px;
+      color:#0B2A52;
+      margin-bottom:10px;
+    }
+
+    .forgot-box p{
+      text-align:center;
+      color:#666;
+      font-size:14px;
+      line-height:22px;
+      margin-bottom:30px;
+    }
+
+    .forgot_section .input-group{
+      margin-bottom:20px;
+    }
+
+    .forgot_section .input-group label{
+      display:block;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:8px;
+      color:#0B2A52;
+    }
+
+    .forgot_section .input-group input{
+      width:100%;
+      height:50px;
+      border:1px solid #d1d5db;
+      border-radius:8px;
+      padding:0 15px;
+      font-size:14px;
+      outline:none;
+    }
+
+    .forgot_section .input-group input:focus{
+      border-color:#0B2A52;
+    }
+
+    .forgot_section .submit-btn{
+      width:100%;
+      height:52px;
+      border:none;
+      border-radius:8px;
+      background:#0B2A52;
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      border:1px solid #0B2A52;
+    }
+
+    .forgot_section .submit-btn:hover{
+    color:#0B2A52;
+      background:transparent;
+    }
+
+    .forgot_section .back-login{
+      text-align:center;
+      margin-top:18px;
+    }
+
+    .forgot_section .back-login a{
+      text-decoration:none;
+      color:#0B2A52;
+      font-size:14px;
+      font-weight:600;
+    }

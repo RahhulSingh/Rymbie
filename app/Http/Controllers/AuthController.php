@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Role;
 class AuthController extends Controller
 {
     
@@ -19,17 +19,30 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        // dd($request->all());
-        $credentials=$request->validate([
-            'email'=>'required|email',
-            'password'=>'required|min:6',
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
-        if(auth()->attempt($credentials)){
-            // dd(auth()->user());
+
+        if (auth()->attempt($credentials)) {
+
+            $user = auth()->user();
+
+            // Only Super Admin Allow
+            if ($user->role->name != 'Super Admin') {
+
+                auth()->logout();
+
+                return back()->with('error', 'Only admin can login');
+
+            }
+
             $request->session()->regenerate();
+
             return redirect()->route('admin.dashboard');
-        }   
-        return back()->with('error','Invalid email or password');
+        }
+
+        return back()->with('error', 'Invalid email or password');
     }
     public function logout()
     {

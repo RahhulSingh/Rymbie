@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contactus;
-use App\Models\contactus_socalmediya;
+use App\Models\Contactus_socalmediya;
 class ContactUsController extends Controller
 {
     public function index()
     {
-        $contactus_socalmediyas = contactus_socalmediya::all();
+        $contactus_socalmediyas = Contactus_socalmediya::all();
         return view('frontend.contact_us', compact('contactus_socalmediyas'));
     }
 
@@ -25,6 +25,7 @@ class ContactUsController extends Controller
             'file' => 'nullable|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:1048',
             'preferred_contact' => 'required|in:whatsapp,email,call',
             'terms' => 'required|boolean',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         $fileName = time() . '.' . $request->file->extension();
