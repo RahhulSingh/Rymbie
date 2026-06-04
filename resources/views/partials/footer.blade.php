@@ -10,11 +10,11 @@
                             <li><a href="#"><i class="fa-solid fa-pen-to-square"></i> Essay Writing</a></li>
                             <li><a href="#"><i class="fa-solid fa-magnifying-glass-chart"></i> Research Paper Help</a>
                             </li>
-                            <li><a href="#"><i class="fa-solid fa-file-circle-check"></i> Case Study Help</a></li>
-                            <li><a href="#"><i class="fa-solid fa-book"></i> Homework Help</a></li>
+                            <!-- <li><a href="#"><i class="fa-solid fa-file-circle-check"></i> Case Study Help</a></li>
+                            <li><a href="#"><i class="fa-solid fa-book"></i> Homework Help</a></li> -->
                             <li><a href="#"><i class="fa-solid fa-bookmark"></i> Thesis Help</a></li>
-                            <li><a href="{{route('frontend.ai.tools')}}"><i class="fa-solid fa-laptop-code"></i> Programming Help</a></li>
-                            <li><a href="#"><i class="fa-solid fa-file-pen"></i> Coursework Help</a></li>
+                            <!-- <li><a href="{{route('frontend.ai.tools')}}"><i class="fa-solid fa-laptop-code"></i> Programming Help</a></li>
+                            <li><a href="#"><i class="fa-solid fa-file-pen"></i> Coursework Help</a></li> -->
                             <li><a href="#"><i class="fa-solid fa-check-double"></i> Editing & Proofreading</a></li>
                         </ul>
                     </div>
@@ -48,7 +48,7 @@
                             <li><a href="#"><i class="fa-solid fa-spell-check"></i> Grammar Checker</a></li>
                             <li><a href="{{route('frontend.resources')}}"><i class="fa-solid fa-database"></i> Knowledge Base</a></li>
                             <li><a href="#"><i class="fa-solid fa-lightbulb"></i> Academic Tips</a></li>
-                            <li><a href="{{route('frontend.program_stack')}}"><i class="fa-solid fa-shield"></i> Program Stack</a></li>
+                            <!-- <li><a href="{{route('frontend.program_stack')}}"><i class="fa-solid fa-shield"></i> Program Stack</a></li> -->
                             <li><a href="{{route('frontend.student_resources')}}"><i class="fa-solid fa-spell-check"></i> Student Resources</a></li>
                         </ul>
                     </div>

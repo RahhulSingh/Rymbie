@@ -47,7 +47,7 @@
                     <div>
                         <a class="nav-link navlinks" href="{{route('frontend.ai.tools')}}">AI Studys Tools</a>
                     </div>
-                    <a href="{{route('frontend.login')}}" class="btn btn-outline-success_button" type="submit">Get Started</a>
+                    <a href="{{route('frontend.login')}}" class="btn btn-outline-success_button" type="submit">Login</a>
                 </form>
             </div>
 

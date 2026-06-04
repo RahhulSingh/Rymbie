@@ -46,7 +46,19 @@ use App\Http\Controllers\Frontend\StudentResourcesController;
 use App\Http\Controllers\Frontend\ProgramStackController;
 use App\Http\Controllers\Frontend\ForgetPasswordController;
 
+use Illuminate\Support\Facades\Mail;
 
+Route::get('/test-mail', function () {
+
+    Mail::raw('Test Mail From Rymbie', function ($message) {
+
+        $message->to('YOURPERSONALEMAIL@gmail.com')
+                ->subject('Test Mail');
+
+    });
+
+    return 'Mail Sent';
+});
 
 
 
@@ -54,23 +66,26 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 
 
 // Login and Register routes for frontend 
-Route::post('/register/store', [RegisterController::class, 'registerStore'])->name('frontend.register.store')->middleware('throttle:5,1'); 
-Route::post('/login/check', [LoginController::class, 'loginCheck'])->name('frontend.login.check')->middleware('throttle:5,1'); 
+Route::post('/register/store', [RegisterController::class, 'registerStore'])->name('frontend.register.store')->middleware('throttle:2,1'); 
+Route::post('/login/check', [LoginController::class, 'loginCheck'])->name('frontend.login.check')->middleware('throttle:2,1'); 
 Route::get('/logout', [LoginController::class, 'logout'])->name('frontend.logout');
 Route::get('/forget-password', [ForgetPasswordController::class, 'index'])->name('frontend.forget_password');
+Route::post('/forget-password/send-link', [ForgetPasswordController::class, 'sendResetLink'])->name('frontend.forget_password.send_link')->middleware('throttle:2,1');
+Route::get('/reset-password/{token}', [ForgetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ForgetPasswordController::class, 'resetPassword'])->name('password.update');
 
 
 Route::get('/how-works', [HowWorksController::class, 'index'])->name('frontend.how.works');
 Route::get('/services', [ServicesController::class, 'index'])->name('frontend.services');
 Route::get('/ai-tools', [AiToolsController::class, 'index'])->name('frontend.ai.tools');
 Route::get('/assignment-brief', [AssignmentBriefController::class, 'index'])->name('frontend.assignment_brief');
-Route::post('/assignment-brief/store', [AssignmentBriefController::class, 'store'])->name('assignment-brief.store')->middleware('throttle:3,1');;
+Route::post('/assignment-brief/store', [AssignmentBriefController::class, 'store'])->name('assignment-brief.store')->middleware('throttle:2,1');;
 Route::get('/careers', [CareersController::class, 'index'])->name('frontend.careers');
 Route::get('/articles', [ArticlesController::class, 'index'])->name('frontend.articles');
 Route::get('/testimonials', [TestimonialsController::class, 'index'])->name('frontend.testimonials');
 Route::get('/faq', [FaqController::class, 'index'])->name('frontend.faq');
 Route::get('/contact_us', [ContactUsController::class, 'index'])->name('frontend.contact_us');
-Route::post('/contact-store',[ContactUsController::class,'store'])->name('contact.store')->middleware('throttle:3,1');;
+Route::post('/contact-store',[ContactUsController::class,'store'])->name('contact.store')->middleware('throttle:2,1');;
 Route::get('/samples', [SamplesController::class, 'index'])->name('frontend.samples');
 Route::get('/resources', [ResourcesController::class, 'index'])->name('frontend.resources');
 Route::get('/live_chat', [LiveChatController::class, 'index'])->name('frontend.live_chat');

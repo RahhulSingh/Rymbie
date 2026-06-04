@@ -7581,3 +7581,144 @@ p {
       font-size:14px;
       font-weight:600;
     }
+.erfeatures-box {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 20px;
+            border-radius: 50px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .erfeatures-box .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            max-width: 180px;
+        }
+
+        .erfeatures-box .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .erfeatures-box .feature-item h4 {
+            margin: 0;
+            font-size: 16px;
+            color: #0b2c5f;
+            font-weight: 700;
+        }
+
+        .erfeatures-box .feature-item p {
+            margin: 4px 0 0;
+            font-size: 12px;
+            color: #0b2c5f;
+            font-weight: 550;
+            letter-spacing: 0px;
+            line-height: 1.4;
+        }
+
+        .icon-1 {
+            background: #d7e6fc !important;
+        }
+
+        .icon-1 i {
+
+            color: #064092 !important;
+        }
+
+
+
+        .icon-2 {
+            background: #def1e9 !important;
+        }
+
+        .icon-2 i {
+
+            color: #33b278 !important;
+        }
+
+        .icon-3 {
+            background: #fdebc4 !important;
+        }
+
+        .icon-3 i {
+            color: #fdab02 !important;
+        }
+
+        .icon-4 {
+            background: #dddaf7 !important;
+        }
+
+        .icon-4 i {
+            color: #503eab !important;
+        }
+
+
+
+
+
+        .trusted_students_ty {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            /* flex-wrap: wrap; */
+            margin-top: 20px;
+        }
+
+        .trusted_students_ty .trusted_users {
+            display: flex;
+            align-items: center;
+        }
+
+        .trusted_students_ty .trusted_users img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+            margin-left: -10px;
+        }
+
+        .trusted_students_ty .trusted_users img:first-child {
+            margin-left: 0;
+        }
+
+        .trusted_students_ty .trusted_rating {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+
+        .trusted_students_ty .stars {
+            color: #f5b301;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .trusted_students_ty .trusted_text {
+            color: #6b7280;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1200px) {
+            .erfeatures-box {
+                gap: 20px;
+            }
+        }
+
+
+        @media (max-width: 435px) {
+            .trusted_students_ty .trusted_text {
+                font-size: 14px;
+            }
+        }

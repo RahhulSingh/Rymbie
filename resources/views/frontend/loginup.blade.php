@@ -29,6 +29,12 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <div class="field">
                         <label>Email Address</label>
                         <input type="email" name="email" autocomplete="email" />

@@ -74,4 +74,19 @@ public function show()
         $assignment = assignment_brief::with('user')->get();
         return view('admin.assignment_brief.index', compact('assignment'));
     }
+
+public function delete($id)
+    {
+        $assignment = assignment_brief::findOrFail($id);
+        if($assignment->brief_file && file_exists(public_path('uploads/assignments/'.$assignment->brief_file)))
+        {
+            unlink(public_path('uploads/assignments/'.$assignment->brief_file));
+        }
+        if($assignment->photo && file_exists(public_path('uploads/assignments/'.$assignment->photo)))
+        {
+            unlink(public_path('uploads/assignments/'.$assignment->photo));
+        }
+        $assignment->delete();
+        return redirect()->back()->with('success', 'Assignment deleted successfully');
+    }
 }

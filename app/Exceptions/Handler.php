@@ -26,10 +26,7 @@ class Handler extends ExceptionHandler
     {
         $this->renderable(function (ThrottleRequestsException $e, $request) {
 
-            return response()->json([
-                'message' => 'Too many attempts. Please try again later.'
-            ], 429);
-
+            return back()->with('error', 'Too many attempts. Please try again after 1 minute.');
         });
     }
 }
